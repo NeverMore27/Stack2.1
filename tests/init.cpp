@@ -6,7 +6,7 @@ SCENARIO("NULL")
 	vector_t vector;
 	REQUIRE(vector.size() == 0);
 	REQUIRE(vector.capacity() == 0);
-	for (i; i <size_;i++)
+	for (int i; i <size_;i++)
 	{
 		REQUIRE(ptr_[i] == 0);
 	}
