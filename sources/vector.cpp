@@ -54,14 +54,14 @@ auto vector_t::push_back(int value) -> void
 {
 	
 	int* ptr = ptr_;
-	if (size_+1 >= capacity_)
+	if (size_ + 1 >= capacity_)
 	{
 		size_++;
 		capacity_ = 2 * size_;
 		ptr_ = new int[capacity_];
-		ptr_ = ptr;
+		if (ptr!=nullptr) ptr_ = ptr;
 	}
-	ptr_[size_-1] = value;
+	ptr_[size_ - 1] = value;
 }
 auto vector_t:: operator[](unsigned int index) const noexcept -> int
 {
