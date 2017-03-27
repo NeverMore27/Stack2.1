@@ -30,13 +30,19 @@ SCENARIO("param")
 	REQUIRE(vector.capacity() == 3);
 }
 
-SCENARIO("element") 
+SCENARIO("push") 
 {
 	vector_t vector(3);
 	vector.push_back(2) ;
 	REQUIRE(vector[3]==2);
 	REQUIRE(vector.size() == 4);
 	REQUIRE(vector.capacity() == 8);
+}
+SCENARIO("element") 
+{
+	vector_t vector(3);
+	vector.push_back(2) ;
+	REQUIRE(vector[3]==2);
 }
 SCENARIO("=") 
 {
