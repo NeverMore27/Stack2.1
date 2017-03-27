@@ -11,10 +11,20 @@ SCENARIO("NULL")
 		REQUIRE(ptr_[i] == 0);
 	}
 }
-SCENARIO("NULL")
+SCENARIO("size")
 {
 	vector_t vector;
 	REQUIRE(vector.size() == 0);
+	vector.push_back(2) ;
+	REQUIRE(vector.size() == 1);
+
+}
+SCENARIO("capacity")
+{
+	vector_t vector;
+	REQUIRE(vector.capacity() == 0);
+	vector.push_back(2) ;
+	REQUIRE(vector.capacity() == 2);
 
 }
 SCENARIO("param") 
