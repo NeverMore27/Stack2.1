@@ -36,7 +36,7 @@ SCENARIO("push")
 	vector.push_back(2) ;
 	REQUIRE(vector[3]==2);
 	REQUIRE(vector.size() == 4);
-	REQUIRE(vector.capacity() == 8);
+	REQUIRE(vector.capacity() == 5);
 }
 SCENARIO("element") 
 {
@@ -51,7 +51,7 @@ SCENARIO("=")
 	vector=vector1;
 	REQUIRE(vector[3]==2);
 	REQUIRE(vector.size()==4);
-	REQUIRE(vector.capacity()==8);
+	REQUIRE(vector.capacity()==5);
 }
 SCENARIO("Copy") 
 {
