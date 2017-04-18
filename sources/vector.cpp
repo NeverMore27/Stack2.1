@@ -55,7 +55,7 @@ auto vector_t::push_back(int value) -> void
 	
 	if (capacity_==0) 
 		{
-		capacity_++;
+		capacity_+=2;
 		delete[] ptr_;
 		ptr_ = new int[capacity_];
 		}
