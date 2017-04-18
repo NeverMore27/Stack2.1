@@ -57,7 +57,7 @@ auto vector_t::push_back(int value) -> void
 		int capacity = capacity_ + 2;
 		
 		int *ptr = new int[capacity];
-		std::copy(ptr_, ptr_ + size_; ptr);
+		std::copy(ptr_, ptr_ + size_, ptr);
 		
 		delete[] ptr_;
 		ptr_ = ptr;
