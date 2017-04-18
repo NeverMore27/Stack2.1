@@ -52,24 +52,16 @@ auto  vector_t::size() const noexcept -> unsigned int
 }
 auto vector_t::push_back(int value) -> void
 {
-	
-	if (capacity_==0) 
-		{
-		capacity_+=2;
-		delete[] ptr_;
-		ptr_ = new int[capacity_];
-		}
-	else
-	if (size_ + 1 > capacity_)
+	if (size_ == capacity_)
 	{
-		int* ptr = ptr_;
-		capacity_ = 2 +size_;
-		ptr_ = new int[capacity_];
-		if (ptr!=nullptr)
-			for (int i=0; i<size_; i++)
-				ptr[i]=ptr_[i];
-			delete[] ptr;
-		ptr=ptr_;
+		int capacity = capacity_ + 2;
+		
+		int *ptr = new int[capacity];
+		std::copy(ptr_, ptr_ + size_; ptr);
+		
+		delete[] ptr_;
+		ptr_ = ptr;
+		capacity_ = capacity;
 	}
 	ptr_[size_++] = value;
 }
