@@ -71,7 +71,7 @@ auto vector_t::push_back(int value) -> void
 			delete[] ptr;
 		ptr=ptr_;
 	}
-	ptr_[size_+1] = value;
+	ptr_[size_++] = value;
 }
 auto vector_t:: operator[](unsigned int index) const noexcept -> int
 {
