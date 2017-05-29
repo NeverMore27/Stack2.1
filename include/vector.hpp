@@ -20,4 +20,6 @@ public:
 	auto pop_back() -> void;
 	vector_t(std::initializer_list<int> list);
 	auto operator[](unsigned int index) const noexcept -> int;
+	auto operator==(vector_t vector) const noexcept -> bool;
+
 };
