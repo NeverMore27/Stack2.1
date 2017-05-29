@@ -60,7 +60,7 @@ SCENARIO("Copy")
 	REQUIRE(vector.size() == v.size());
 	REQUIRE(vector.capacity() == v.capacity());
 }
-SCENARIO("Copy") 
+SCENARIO("del") 
 {
 	vector_t v={1,2,3,5,7,8,1,2,4};
 	vector_t vector={1,2,3,5,7,8,1};
