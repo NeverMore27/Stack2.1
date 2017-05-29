@@ -56,7 +56,7 @@ auto vector_t::push_back(int value) -> void
 		int capacity = capacity_ + 2;
 
 		int *ptr = new int[capacity];
-		std::copy(ptr_, ptr_ + size_, ptr);
+		copy(ptr_, ptr_ + size_, ptr);
 
 		delete[] ptr_;
 		ptr_ = ptr;
@@ -76,7 +76,7 @@ auto vector_t::pop_back() -> void
 	capacity_ = capacity;
 	size_--;
 }
-vector_t:: vector_t(std::initializer_list<int> list)
+vector_t:: vector_t(initializer_list<int> list)
 {
 	size_ = capacity_ = 0;
 	ptr_ = nullptr;
