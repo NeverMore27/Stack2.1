@@ -1,6 +1,6 @@
 #include "vector.hpp"
 
-vector_t:: vector_t() noexcept
+vector_t::vector_t() noexcept
 {
 	size_ = capacity_ = 0;
 	ptr_ = nullptr;
@@ -13,7 +13,6 @@ vector_t::vector_t(const vector_t& other)
 	for (unsigned int i = 0; i < size_; i++)
 		ptr_[i] = other.ptr_[i];
 }
-
 vector_t::vector_t(unsigned int size)
 {
 	size_ = size;
@@ -26,7 +25,7 @@ vector_t::vector_t(unsigned int size)
 	}
 }
 vector_t:: ~vector_t() noexcept
-{	
+{
 	size_ = capacity_ = 0;
 	delete[] ptr_;
 }
@@ -35,7 +34,7 @@ auto vector_t:: operator=(const vector_t& other)->vector_t&
 	if (ptr_ == other.ptr_) return *this; else {
 		size_ = other.size_;
 		capacity_ = other.capacity_;
-		delete [] ptr_;
+		delete[] ptr_;
 		ptr_ = new int[capacity_];
 		for (unsigned int i = 0; i < size_; i++)
 			ptr_[i] = other.ptr_[i];
@@ -55,18 +54,40 @@ auto vector_t::push_back(int value) -> void
 	if (size_ == capacity_)
 	{
 		int capacity = capacity_ + 2;
-		
+
 		int *ptr = new int[capacity];
 		std::copy(ptr_, ptr_ + size_, ptr);
-		
+
 		delete[] ptr_;
 		ptr_ = ptr;
 		capacity_ = capacity;
 	}
 	ptr_[size_++] = value;
 }
+auto vector_t::pop_back() -> void
+{
+	int capacity = size_ - 1;
+	int *ptr = new int[capacity];
+	for (int i = 0; i < capacity; i++)
+		ptr[i] = ptr_[i];
+	delete[] ptr_;
+
+	ptr_ = ptr;
+	capacity_ = capacity;
+	size_--;
+}
+vector_t:: vector_t(std::initializer_list<int> list)
+{
+	size_ = capacity_ = 0;
+	ptr_ = nullptr;
+	for (auto& item : list)
+	{
+		push_back(item);
+	}
+
+}
 auto vector_t:: operator[](unsigned int index) const noexcept -> int
 {
-		return ptr_[index];
+	return ptr_[index];
 }
 
