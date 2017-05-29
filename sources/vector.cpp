@@ -92,9 +92,9 @@ auto vector_t:: operator[](unsigned int index) const noexcept -> int
 }
 auto vector_t:: operator==(vector_t vector) const noexcept -> bool
 {
+	int k=0;
 	for (int i=0;i<size_; i++)
 	{
-		int k=0;
 		if (ptr_[i]==vector.ptr_[i]) k++;
 	}
 	if (k==size_) return true;
