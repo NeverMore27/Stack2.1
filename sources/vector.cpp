@@ -90,7 +90,7 @@ auto vector_t:: operator[](unsigned int index) const noexcept -> int
 {
 	return ptr_[index];
 }
-auto vector_t:: operator==(vector_t vector) const noexcept -> bool;
+auto vector_t:: operator==(vector_t vector) const noexcept -> bool
 {
 	for (int i=0;i<size_; i++)
 	{
