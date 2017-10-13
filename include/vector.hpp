@@ -43,7 +43,7 @@ stack<T>::stack(const stack& object)
 {
 	array_size_ = object.array_size_;
 	count_ = object.count_;
-	swap(count_, object.array_, array_, );
+	swap(count_, object.array_, array_);
 }
 template <typename T>
 stack<T>& stack<T>:: operator =(const stack<T>&object)
@@ -53,7 +53,7 @@ stack<T>& stack<T>:: operator =(const stack<T>&object)
 		array_size_ = object.array_size_;
 		count_ = object.count_;
 		delete[] array_;
-		swap(count_, object.array_, array_, );
+		swap(count_, object.array_, array_);
 	}
 	return *this;
 }
