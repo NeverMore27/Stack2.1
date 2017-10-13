@@ -1,7 +1,14 @@
 
 #include <vector.hpp>
 #include <catch.hpp>
-SCENARIO("null")
+SCENARIO("ini")
+{
+	stack<int> Stack;
+	REQUIRE(Stack.count() == 0);
+	REQUIRE(Stack.size() == 0);
+}
+	
+SCENARIO("push")
 {
 	stack<int> Stack;
 	Stack.push(5);
@@ -11,20 +18,23 @@ SCENARIO("null")
 	REQUIRE(val == 7);
 }
 
-SCENARIO("null1")
+SCENARIO("count and size")
 {
 	stack<int> Stack;
 	Stack.push(5);
 	Stack.push(7);
-	Stack.push(9);
-	int val = Stack.pop();
 	REQUIRE(Stack.count() == 2);
 	REQUIRE(Stack.size() == 2);
-	REQUIRE(val == 9);
 }
 
-SCENARIO("null2")
+SCENARIO("pop")
 {
 	stack<int> Stack;
-	REQUIRE(Stack.count() == 0);
+	Stack.push(5);
+	Stack.push(7);
+	int val = Stack.pop();
+	REQUIRE(Stack.count() == 2);
+	REQUIRE(val == 7);
+	REQUIRE(Stack.size() == 2);
 }
+
