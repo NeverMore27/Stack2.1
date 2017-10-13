@@ -11,7 +11,7 @@ SCENARIO("null")
 	REQUIRE(val == 7);
 }
 
-SCENARIO("null")
+SCENARIO("null1")
 {
 	stack<int> Stack;
 	Stack.push(5);
@@ -22,12 +22,12 @@ SCENARIO("null")
 	REQUIRE(val == 9);
 }
 
-SCENARIO("null")
+SCENARIO("null2")
 {
 	stack<int> Stack;
 	REQUIRE(Stack.count() == 0);
 }
-SCENARIO("null")
+SCENARIO("null3")
 {
 	stack<int> Stack;
 	Stack.push(5);
