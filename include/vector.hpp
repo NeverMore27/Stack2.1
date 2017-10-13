@@ -95,7 +95,7 @@ T stack<T>::pop()
 		else {
 			if (array_size_ * 2 == count_) {
 				T *ptr = array_;
-				array_size_ /= 2;
+				count_ /= 2;
 				swap(count_, ptr, array_);
 				delete[] ptr;
 			}
