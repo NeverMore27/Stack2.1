@@ -1,6 +1,3 @@
-#include <iostream>
-#include <string>
-template <typename T>
 class stack
 {
 public:
@@ -16,9 +13,14 @@ private:
 	T * array_;
 	size_t array_size_;
 	size_t count_;
-	void swap(const size_t&, const stack, T*);
+	void swap(size_t, size_t, const T*, T*&);
 };
-
+template <typename T>
+void stack<T>::swap(size_t count, size_t size, const T* _ar, T*& ar)
+{
+	ar = new T[size];
+	std::copy(_ar, _ar + count, ar);
+}
 template <typename T>
 stack<T>::stack()
 {
@@ -38,15 +40,7 @@ stack<T>::stack(const stack& object)
 {
 	array_size_ = object.array_size_;
 	count_ = object.count_;
-	delete[] array_;
-	swap(array_size_, object, array_);
-	std::copy(&object.array_[0], object.array_size_ + object.array_, &array_[0]);
-}
-template <typename T>
-void stack<T>::swap(const size_t &size, const stack object, T* ar)
-{
-	array_ = new T[size];
-	std::copy(&object.array_[0], object.array_size_ + object.array_, &ar[0]);
+	swap(count_, array_size_, object.array_, array_, );
 }
 template <typename T>
 stack<T>& stack<T>:: operator =(const stack<T>&object)
@@ -56,22 +50,27 @@ stack<T>& stack<T>:: operator =(const stack<T>&object)
 		array_size_ = object.array_size_;
 		count_ = object.count_;
 		delete[] array_;
-		swap(array_size_, object, array_);
+		swap(count_, array_size_, object.array_, array_, );
 	}
 	return *this;
 }
-
 template <typename T>
 void stack<T>::push(T const &value)
 {
+	if (array_size_ == 0)
+	{
+		count_=2; 
+		array_size_++;
+		array_ = new T[array_size_];
+		array_[0] = value;
+	}
 	if (array_size_ == count_)
 	{
+		T *ptr = array_;
 		int capacity = count_ * 2;
-		int *ptr;
-		swap(capacity, *this, &*ptr);
-		delete[] array_;
-		array_ = ptr;
+		swap(count_, array_size_, ptr, array_);
 		count_ = capacity;
+		delete[] ptr;
 	}
 	array_[count_++] = value;
 }
