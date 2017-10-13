@@ -1,3 +1,6 @@
+#include <iostream>
+#include <string>
+template <typename T>
 class stack
 {
 public:
