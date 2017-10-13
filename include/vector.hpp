@@ -11,7 +11,7 @@ public:
 	size_t count() const;
 	void push(T const &);
 	T pop();
-	size() const;
+	size_t size() const;
 	void stack_print();
 private:
 	T * array_;
