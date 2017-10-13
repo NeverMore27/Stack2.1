@@ -7,7 +7,7 @@ SCENARIO("null")
 	Stack.push(5);
 	Stack.push(7);
 	int val = Stack.pop();
-	REQUIRE(Stack.count() == 2);
+	REQUIRE(Stack.count() == 1);
 	REQUIRE(val == 7);
 }
 
