@@ -35,6 +35,6 @@ SCENARIO("pop")
 	int val = Stack.pop();
 	REQUIRE(Stack.count() == 2);
 	REQUIRE(val == 7);
-	REQUIRE(Stack.size() == 2);
+	REQUIRE(Stack.size() == 1);
 }
 
