@@ -18,7 +18,7 @@ SCENARIO("null1")
 	Stack.push(7);
 	Stack.push(9);
 	int val = Stack.pop();
-	REQUIRE(Stack.count() == 4);
+	REQUIRE(Stack.count() == 2);
 	REQUIRE(Stack.size() == 2);
 	REQUIRE(val == 9);
 }
