@@ -28,7 +28,7 @@ void stack<T>::swap(stack<T>& object)
 }
 
 template <typename T>
-stack<T>::stack() : count{0}, array_size{0}, array_{nullptr}
+stack<T>::stack() : count_{0}, array_size_{0}, array_{nullptr}
 {
 }
 
