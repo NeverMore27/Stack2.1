@@ -91,8 +91,8 @@ T stack<T>::pop()
 {
 	if (count_==0)
 		throw "Stack is empty";
-	count_--;
-	return array_[count_];
+	count_--; array_size_--;
+	return array_[array_size_];
 }
 template <typename T>
 size_t stack<T>::count() const
