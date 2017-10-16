@@ -22,10 +22,10 @@ private:
 template <typename T>
 void stack<T>::swap(stack<T>& object)
 {
-	aray_ = new T[object.count];
+	array_ = new T[object.count];
 	array_size_ = object.array_size_;
 	count_ = object.count_;
-	std::copy(object.aray_, object.aray_ + count, aray_);
+	std::copy(object.array_, object.array_ + count_, array_);
 }
 template <typename T>
 stack<T>::stack()
@@ -47,7 +47,7 @@ stack<T>::stack(const stack& object)
 	array_size_ = object.array_size_;
 	count_ = object.count_;
 	array_=new T[count_];
-	std::copy(object.array_,object.array_+arry_size_, array_);
+	std::copy(object.array_,object.array_+array_size_, array_);
 }
 template <typename T>
 stack<T>& stack<T>:: operator =(const stack<T>&object)
