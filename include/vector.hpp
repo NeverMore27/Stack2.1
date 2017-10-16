@@ -78,7 +78,7 @@ void stack<T>::push(T const &value)
 			
 		int capacity = count_ + 2;
 		int *ptr = new int[capacity];
-		copy(array_, array_ + count_, ptr);
+		std::copy(array_, array_ + count_, ptr);
 		delete[] array_;
 		array_ = ptr;
 		count_ = capacity;
