@@ -8,7 +8,6 @@ public:
 	~stack();
 	stack(const stack<T>&);
 	stack<T>& operator =(const stack<T>&);
-	size_t count() const;
 	void push(T const &);
 	T pop();
 	size_t size() const;
@@ -88,11 +87,6 @@ T stack<T>::pop()
 		throw "Stack is empty";
 	count_--; array_size_--;
 	return array_[array_size_];
-}
-template <typename T>
-size_t stack<T>::count() const
-{
-	return count_;
 }
 template <typename T>
 size_t stack<T>::size() const
