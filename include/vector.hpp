@@ -66,25 +66,20 @@ void stack<T>::push(T const &value)
 	if (count_ == 0)
 	{
 		
-			count_ = 1;
-			array_size_ = 1;
+			count_=1;
 			array_ = new T[count_];
-			array_[0] = value;
 	}
 	else 
-	{
 		if (array_size_ == count_)
 		{
 			
-		int capacity = count_ + 2;
-		int *ptr = new int[capacity];
-		std::copy(array_, array_ + count_, ptr);
+		count_ *= 2;
+		int *ptr = new int[count_];
+		std::copy(array_, array_ + array_size_, ptr);
 		delete[] array_;
 		array_ = ptr;
-		count_ = capacity;
 		}
 		array_[array_size_++] = value;
-	}
 }
 template <typename T>
 T stack<T>::pop()
