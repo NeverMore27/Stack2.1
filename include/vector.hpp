@@ -21,10 +21,9 @@ private:
 template <typename T>
 void stack<T>::swap(stack<T>& object)
 {
-	array_ = new T[object.count];
-	array_size_ = object.array_size_;
-	count_ = object.count_;
-	std::copy(object.array_, object.array_ + count_, array_);
+	std::swap(object.array_size_, array_size_);
+	std::swap(count_, object.count_);
+	std::swap(object.array_, array_);
 }
 template <typename T>
 stack<T>::stack()
