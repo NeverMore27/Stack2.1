@@ -5,6 +5,7 @@ SCENARIO("ini")
 {
 	stack<int> Stack;
 	REQUIRE(Stack.size() == 0);
+	REQUIRE(Stack.empty());
 }
 	
 SCENARIO("push")
