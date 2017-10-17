@@ -10,9 +10,10 @@ public:
 	stack(const stack<T>&) noexcept;
 	stack<T>& operator =(const stack<T>&) noexcept;
 	void push(T const &) noexcept;
-	void() noexcept;
+	void pop() noexcept;
 	T top () const noexcept;
 	size_t size() const noexcept;
+	bool empty() noexcept;
 private:
 	T * array_;
 	size_t array_size_;
@@ -91,6 +92,5 @@ size_t stack<T>::size() const noexcept
 template <typename T>
 bool stack<T>::empty() const noexcept
 {	
-	if (count_==0) return false;
-	else return true;
+	 return count_==0;
 }
