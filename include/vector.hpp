@@ -13,12 +13,12 @@ public:
 	void pop() noexcept;
 	T top () const noexcept;
 	size_t size() const noexcept;
-	bool empty() noexcept;
+	bool empty() const noexcept;
 private:
 	T * array_;
 	size_t array_size_;
 	size_t count_;
-	void swap(stack<T>&);
+	void swap(stack<T>&) noexcept;
 };
 
 template <typename T>
@@ -72,6 +72,7 @@ void stack<T>::push(T const &value) noexcept
 	}
 	array_[count_++] = value;
 }
+
 template <typename T>
 void stack<T>::pop() noexcept
 {
@@ -79,16 +80,19 @@ void stack<T>::pop() noexcept
 		throw "Stack is empty";
 	count_--;
 }
+
 template <typename T>
-void stack<T>::top() noexcept
+T stack<T>::top() noexcept
 {
 	return array_[count];
 }
+
 template <typename T>
 size_t stack<T>::size() const noexcept
 {
 	return count_;
 }
+
 template <typename T>
 bool stack<T>::empty() const noexcept
 {	
