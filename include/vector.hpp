@@ -82,9 +82,9 @@ void stack<T>::pop() noexcept
 }
 
 template <typename T>
-T stack<T>::top() noexcept
+T stack<T>::top() const noexcept
 {
-	return array_[count];
+	return array_[count_];
 }
 
 template <typename T>
