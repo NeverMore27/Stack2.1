@@ -5,13 +5,14 @@ template <typename T>
 class stack
 {
 public:
-	stack();
-	~stack();
-	stack(const stack<T>&);
-	stack<T>& operator =(const stack<T>&);
-	void push(T const &);
-	T pop();
-	size_t size() const;
+	stack() noexcept;
+	~stack() noexcept;
+	stack(const stack<T>&) noexcept;
+	stack<T>& operator =(const stack<T>&) noexcept;
+	void push(T const &) noexcept;
+	void() noexcept;
+	T top () const noexcept;
+	size_t size() const noexcept;
 private:
 	T * array_;
 	size_t array_size_;
@@ -20,7 +21,7 @@ private:
 };
 
 template <typename T>
-void stack<T>::swap(stack<T>& object)
+void stack<T>::swap(stack<T>& object) noexcept
 {
 	std::swap(object.array_size_, array_size_);
 	std::swap(count_, object.count_);
@@ -28,18 +29,18 @@ void stack<T>::swap(stack<T>& object)
 }
 
 template <typename T>
-stack<T>::stack() : count_{0}, array_size_{0}, array_{nullptr}
+stack<T>::stack() noexcept : count_{0}, array_size_{0}, array_{nullptr}
 {
 }
 
 template <typename T>
-stack<T>::~stack()
+stack<T>::~stack() noexcept
 {
 	delete[] array_;
 }
 
 template <typename T>
-stack<T>::stack(const stack& object)
+stack<T>::stack(const stack& object) noexcept
 {
 	array_size_ = object.array_size_;
 	count_ = object.count_;
@@ -48,7 +49,7 @@ stack<T>::stack(const stack& object)
 }
 
 template <typename T>
-stack<T>& stack<T>:: operator =(const stack<T>&object)
+stack<T>& stack<T>:: operator =(const stack<T>&object) noexcept
 {
 	if (this != &object)
 	{
@@ -58,7 +59,7 @@ stack<T>& stack<T>:: operator =(const stack<T>&object)
 }
 
 template <typename T>
-void stack<T>::push(T const &value)
+void stack<T>::push(T const &value) noexcept
 {
 	if (array_size_ == count_)
 	{
@@ -71,15 +72,25 @@ void stack<T>::push(T const &value)
 	array_[count_++] = value;
 }
 template <typename T>
-T stack<T>::pop()
+void stack<T>::pop() noexcept
 {
 	if (count_==0)
 		throw "Stack is empty";
 	count_--;
-	return array_[count_];
 }
 template <typename T>
-size_t stack<T>::size() const
+void stack<T>::top() noexcept
+{
+	return array_[count];
+}
+template <typename T>
+size_t stack<T>::size() const noexcept
 {
 	return count_;
+}
+template <typename T>
+bool stack<T>::empty() const noexcept
+{	
+	if (count_==0) return false;
+	else return true;
 }
