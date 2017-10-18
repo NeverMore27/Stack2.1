@@ -8,7 +8,7 @@ public:
 	stack();
 	~stack() noexcept;
 	stack(const stack<T>&);
-	stack<T>& operator =(const stack<T>&);
+	stack<T>& operator =(const stack<T>&) noexcept;
 	void push(T const &);
 	void pop();
 	T top () const;
