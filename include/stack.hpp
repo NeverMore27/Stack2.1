@@ -6,19 +6,19 @@ class stack
 {
 public:
 	stack();
-	~stack() noexcept;
+	~stack()  /*noexcept*/ noexcept;
 	stack(const stack<T>&);
-	stack<T>& operator =(const stack<T>&) noexcept;
-	void push(T const &);
-	void pop();
-	T top () const;
-	size_t size() const noexcept;
-	bool empty() const noexcept;
+	stack<T>& operator =(const stack<T>&) /*noexcept*/ noexcept;
+	void push(T const &) /*basic*/;
+	void pop() /*strong*/;
+	T top () /*basic*/ const;
+	size_t size() const /*noexcept*/ noexcept;
+	bool empty() const /*noexcept*/ noexcept;
 private:
 	T * array_;
 	size_t array_size_;
 	size_t count_;
-	void swap(stack<T>&) noexcept;
+	void swap(stack<T>&) /*noexcept*/ noexcept;
 };
 
 template <typename T>
