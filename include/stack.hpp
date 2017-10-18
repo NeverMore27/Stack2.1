@@ -5,7 +5,7 @@ template <typename T>
 class stack
 {
 public:
-	stack();
+	stack() basic;
 	~stack() noexcept;
 	stack(const stack<T>&);
 	stack<T>& operator =(const stack<T>&) noexcept;
@@ -30,7 +30,7 @@ void stack<T>::swap(stack<T>& object) noexcept
 }
 
 template <typename T>
-stack<T>::stack() : count_{0}, array_size_{0}, array_{nullptr}
+stack<T>::stack() basic: count_{0}, array_size_{0}, array_{nullptr}
 {
 }
 
