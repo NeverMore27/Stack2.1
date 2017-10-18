@@ -5,13 +5,13 @@ template <typename T>
 class stack
 {
 public:
-	stack() noexcept;
+	stack();
 	~stack() noexcept;
 	stack(const stack<T>&) noexcept;
-	stack<T>& operator =(const stack<T>&) noexcept;
-	void push(T const &) noexcept;
-	void pop() noexcept;
-	T top () const noexcept;
+	stack<T>& operator =(const stack<T>&);
+	void push(T const &);
+	void pop();
+	T top () const;
 	size_t size() const noexcept;
 	bool empty() const noexcept;
 private:
@@ -30,7 +30,7 @@ void stack<T>::swap(stack<T>& object) noexcept
 }
 
 template <typename T>
-stack<T>::stack() noexcept : count_{0}, array_size_{0}, array_{nullptr}
+stack<T>::stack() : count_{0}, array_size_{0}, array_{nullptr}
 {
 }
 
@@ -41,7 +41,7 @@ stack<T>::~stack() noexcept
 }
 
 template <typename T>
-stack<T>::stack(const stack& object) noexcept
+stack<T>::stack(const stack& object)
 {
 	array_size_ = object.array_size_;
 	count_ = object.count_;
@@ -60,7 +60,7 @@ stack<T>& stack<T>:: operator =(const stack<T>&object) noexcept
 }
 
 template <typename T>
-void stack<T>::push(T const &value) noexcept
+void stack<T>::push(T const &value)
 {
 	if (array_size_ == count_)
 	{
@@ -74,7 +74,7 @@ void stack<T>::push(T const &value) noexcept
 }
 
 template <typename T>
-void stack<T>::pop() noexcept
+void stack<T>::pop()
 {
 	if (count_==0)
 		throw "Stack is empty";
@@ -82,7 +82,7 @@ void stack<T>::pop() noexcept
 }
 
 template <typename T>
-T stack<T>::top() const noexcept
+T stack<T>::top() const
 {
 	return array_[count_];
 }
