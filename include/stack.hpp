@@ -78,7 +78,7 @@ void stack<T>::pop()
 {
 	if (empty())
 	{
-		throw std::logic_error("Stack is empty!");
+		throw "Stack is empty!";
 	}
 	count_--;
 }
@@ -88,7 +88,7 @@ T stack<T>::top() const
 {
 	if (empty())
 	{
-		throw std::logic_error("Stack is empty!");
+		throw "Stack is empty!";
 	}
 	return array_[count_];
 }
