@@ -11,7 +11,7 @@ public:
 	stack<T>& operator =(const stack<T>&) /*no safety*/;
 	void push(T const &) /*no safety*/;
 	void pop() /*strong*/;
-	T top () /*strong*/ const;
+	T top () /*strong*/;
 	size_t size() const /*noexcept*/ noexcept;
 	bool empty() const /*noexcept*/ noexcept;
 private:
@@ -84,7 +84,7 @@ void stack<T>::pop()
 }
 
 template <typename T>
-T stack<T>::top() const
+T stack<T>::top()
 {
 	if (empty())
 	{
