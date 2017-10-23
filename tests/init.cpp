@@ -13,7 +13,6 @@ SCENARIO("push")
 	stack<int> Stack;
 	Stack.push(5);
 	Stack.push(7);
-	Stack.pop();
 	int val = Stack.top();
 	REQUIRE(val == 7);
 	REQUIRE(Stack.size() == 1);
@@ -32,7 +31,6 @@ SCENARIO("pop")
 	stack<int> Stack;
 	Stack.push(5);
 	Stack.push(7);
-	Stack.pop();
 	int val = Stack.top();
 	REQUIRE(val == 7);
 	REQUIRE(Stack.size() == 1);
