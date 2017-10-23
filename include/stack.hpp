@@ -7,7 +7,7 @@ class stack
 public:
 	stack() /*noexcept*/; 
 	~stack()  /*noexcept*/ noexcept;
-	stack(const stack<T>&) /*noexcept*/;
+	stack(const stack<T>&) /*no safety*/;
 	stack<T>& operator =(const stack<T>&) /*no safety*/;
 	void push(T const &) /*no safety*/;
 	void pop() /*strong*/;
