@@ -90,7 +90,7 @@ T stack<T>::top() const
 	{
 		throw "Stack is empty!";
 	}
-	return array_[--count_];
+	return array_[count_--];
 }
 
 template <typename T>
