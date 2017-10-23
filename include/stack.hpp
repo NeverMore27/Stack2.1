@@ -30,7 +30,7 @@ void stack<T>::swap(stack<T>& object) noexcept
 }
 
 template <typename T>
-stack<T>::stack(): count_{0}, array_size_{0}, array_{nullptr}
+stack<T>::stack() noexcept: count_{0}, array_size_{0}, array_{nullptr} 
 {
 }
 
