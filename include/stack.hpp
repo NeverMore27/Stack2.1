@@ -8,7 +8,7 @@ public:
 	stack() /*noexcept*/ noexcept; 
 	~stack()  /*noexcept*/ noexcept;
 	stack(const stack<T>&) /*no safety*/;
-	stack<T>& operator =(const stack<T>&) /*no safety*/;
+	stack<T>& operator =(const stack<T>&) noexcept;
 	void push(T const &) /*no safety*/;
 	void pop() /*strong*/;
 	T top () /*strong*/;
@@ -52,18 +52,18 @@ stack<T>::stack(const stack& object)
 	}
 	catch (std::bad_alloc)
 	{
-    		cout <<  "Allocation failure " << endl;
+    		std::cout <<  "Allocation failure " << std::endl;
           	abort();
 	}
 	catch (std::out_of_range)
 	{
-    		cout <<  "Copy error " << endl;
+    		std::cout <<  "Copy range error " << std::endl;
           	abort();
 	}
 }
 
 template <typename T>
-stack<T>& stack<T>:: operator =(const stack<T>&object)
+stack<T>& stack<T>:: operator =(const stack<T>&object) noexcept
 {
 	if (this != &object)
 	{
