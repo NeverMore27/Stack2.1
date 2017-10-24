@@ -7,7 +7,7 @@ class stack
 public:
 	stack() /*noexcept*/ noexcept; 
 	~stack()  /*noexcept*/ noexcept;
-	stack(const stack<T>&) /*no safety*/;
+	stack(const stack<T>&) /*strong*/;
 	stack<T>& operator =(const stack<T>&) noexcept;
 	void push(T const &) /*no safety*/;
 	void pop() /*strong*/;
@@ -78,8 +78,21 @@ void stack<T>::push(T const &value)
 	if (array_size_ == count_)
 	{
 		array_size_ = array_size_ == 0 ? 1 : array_size_ * 2;
-		T *ptr = new T [array_size_];
-		std::copy(array_, array_ + count_, ptr);
+		try 
+		{
+			T *ptr = new T [array_size_];
+			std::copy(array_, array_ + count_, ptr);
+		}
+		catch (std::bad_alloc)
+		{
+    			std::cout <<  "Allocation failure " << std::endl;
+          		abort();
+		}
+		catch (std::exception &e)
+		{
+    			std::cerr << e.what() << std::endl;  
+      			abort();
+		}
 		delete[] array_;
 		array_ = ptr;
 	}
