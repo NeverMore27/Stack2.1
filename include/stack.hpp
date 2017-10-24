@@ -50,9 +50,14 @@ stack<T>::stack(const stack& object)
 	array_=new T[count_];
 	std::copy(object.array_,object.array_+count_, array_);
 	}
-	catch (bad_alloc)
+	catch (std::bad_alloc)
 	{
     		cout <<  "Allocation failure " << endl;
+          	abort();
+	}
+	catch (std::out_of_range)
+	{
+    		cout <<  "Copy error " << endl;
           	abort();
 	}
 }
