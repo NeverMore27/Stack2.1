@@ -82,6 +82,8 @@ void stack<T>::push(T const &value)
 		{
 			T *ptr = new T [array_size_];
 			std::copy(array_, array_ + count_, ptr);
+			delete[] array_;
+			array_ = ptr;
 		}
 		catch (std::bad_alloc)
 		{
@@ -93,8 +95,6 @@ void stack<T>::push(T const &value)
     			std::cerr << e.what() << std::endl;  
       			abort();
 		}
-		delete[] array_;
-		array_ = ptr;
 	}
 	array_[count_++] = value;
 }
