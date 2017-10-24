@@ -55,7 +55,7 @@ stack<T>::stack(const stack& object)
     		std::cout <<  "Allocation failure " << std::endl;
           	abort();
 	}
-	catch (std::invalid_argument& e)
+	catch (std::errc::invalid_argument& e)
 	{
     		std::cerr << e.what() << std::endl;  
       		abort();
