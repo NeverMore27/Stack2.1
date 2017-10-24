@@ -9,7 +9,7 @@ public:
 	~stack()  /*noexcept*/ noexcept;
 	stack(const stack<T>&) /*strong*/;
 	stack<T>& operator =(const stack<T>&) noexcept;
-	void push(T const &) /*no safety*/;
+	void push(T const &) /*strong*/;
 	void pop() /*strong*/;
 	T top () /*strong*/;
 	size_t size() const /*noexcept*/ noexcept;
