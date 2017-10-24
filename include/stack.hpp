@@ -55,10 +55,10 @@ stack<T>::stack(const stack& object)
     		std::cout <<  "Allocation failure " << std::endl;
           	abort();
 	}
-	catch (...)
+	catch (std::invalid_argument& e)
 	{
-    		std::cout <<  "Copy range error " << std::endl;
-          	abort();
+    		std::cerr << e.what() << std::endl;  
+      		abort();
 	}
 }
 
