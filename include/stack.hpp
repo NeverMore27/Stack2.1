@@ -45,8 +45,16 @@ stack<T>::stack(const stack& object)
 {
 	array_size_ = object.array_size_;
 	count_ = object.count_;
+	try 
+	{
 	array_=new T[count_];
 	std::copy(object.array_,object.array_+count_, array_);
+	}
+	catch (bad_alloc)
+	{
+    		cout <<  "Allocation failure " << endl;
+          	abort();
+	}
 }
 
 template <typename T>
