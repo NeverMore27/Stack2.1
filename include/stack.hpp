@@ -55,7 +55,7 @@ stack<T>::stack(const stack& object)
     		std::cout <<  "Allocation failure " << std::endl;
           	abort();
 	}
-	catch (std::out_of_range)
+	catch (...)
 	{
     		std::cout <<  "Copy range error " << std::endl;
           	abort();
