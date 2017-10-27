@@ -47,8 +47,8 @@ stack<T>::stack(const stack& object)
 	count_ = object.count_;
 	try 
 	{
-	array_=new T[count_];
-	std::copy(object.array_,object.array_+count_, array_);
+		array_=new T[count_];
+		std::copy(object.array_,object.array_+count_, array_);
 	}
 	catch (std::bad_alloc)
 	{
@@ -88,12 +88,14 @@ void stack<T>::push(T const &value)
 		catch (std::bad_alloc)
 		{
     			std::cout <<  "Allocation failure " << std::endl;
-          		abort();
+			delete [array_];
+			throw "bad_alloc";
 		}
 		catch (std::exception &e)
 		{
     			std::cerr << e.what() << std::endl;  
-      			abort();
+      			delete[] arrau_;
+			throw;
 		}
 	}
 	array_[count_++] = value;
