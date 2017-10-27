@@ -53,12 +53,14 @@ stack<T>::stack(const stack& object)
 	catch (std::bad_alloc)
 	{
     		std::cout <<  "Allocation failure " << std::endl;
-          	abort();
+          	delete[] array_;
+		throw;
 	}
 	catch (std::exception &e)
 	{
     		std::cerr << e.what() << std::endl;  
-      		abort();
+      		delete[] array_;
+		throw;
 	}
 }
 
