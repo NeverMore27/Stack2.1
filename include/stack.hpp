@@ -88,7 +88,7 @@ void stack<T>::push(T const &value)
 		catch (std::bad_alloc)
 		{
     			std::cout <<  "Allocation failure " << std::endl;
-			delete [array_];
+			delete[] array_;
 			throw "bad_alloc";
 		}
 		catch (std::exception &e)
