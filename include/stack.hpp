@@ -94,7 +94,7 @@ void stack<T>::push(T const &value)
 		catch (std::exception &e)
 		{
     			std::cerr << e.what() << std::endl;  
-      			delete[] arrau_;
+      			delete[] array_;
 			throw;
 		}
 	}
