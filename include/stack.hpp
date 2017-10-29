@@ -62,6 +62,12 @@ stack<T>::stack(const stack& object)
       		delete[] array_;
 		throw;
 	}
+	catch (...)
+	{
+    		std::cout << "error" << std::endl;  
+      		delete[] array_;
+		throw;
+	}
 }
 
 template <typename T>
