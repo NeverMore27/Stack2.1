@@ -25,10 +25,11 @@ private:
 
 template <typename T>
 void stack<T>::swap(stack<T>& object) noexcept
-{
+{	mutex_.lock();
 	std::swap(object.array_size_, array_size_);
 	std::swap(count_, object.count_);
 	std::swap(object.array_, array_);
+ 	mutex_.unlock();
 }
 
 template <typename T>
