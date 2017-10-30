@@ -15,7 +15,7 @@ SCENARIO("push")
 	Stack.push(7);
 	int val = Stack.top();
 	REQUIRE(val == 7);
-	REQUIRE(Stack.size() == 1);
+	REQUIRE(Stack.size() == 2);
 }
 
 SCENARIO("count and size")
@@ -33,6 +33,6 @@ SCENARIO("pop")
 	Stack.push(7);
 	int val = Stack.top();
 	REQUIRE(val == 7);
-	REQUIRE(Stack.size() == 1);
+	REQUIRE(Stack.size() == 2);
 }
 
