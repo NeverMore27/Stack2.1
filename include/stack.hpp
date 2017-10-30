@@ -15,6 +15,7 @@ public:
 	size_t size() const /*noexcept*/ noexcept;
 	bool empty() const /*noexcept*/ noexcept;
 private:
+	std::mutex mutex_;
 	T * array_;
 	size_t array_size_;
 	size_t count_;
@@ -70,6 +71,7 @@ stack<T>& stack<T>:: operator =(const stack<T>&object) noexcept
 template <typename T>
 void stack<T>::push(T const &value)
 {
+	mutex_.lock();
 	if (array_size_ == count_)
 	{
 		array_size_ = array_size_ == 0 ? 1 : array_size_ * 2;
@@ -95,6 +97,7 @@ void stack<T>::push(T const &value)
 template <typename T>
 void stack<T>::pop()
 {
+	mutex_.lock();
 	if (empty())
 	{
 		throw "Stack is empty!";
