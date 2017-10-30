@@ -1,10 +1,10 @@
 #include "stack.hpp"
-#include <thred>
+#include <thread>
 #include <string>
 
 
-template <typename T>
-void produser (stck<T> &st)
+
+void produser (stck<int> &st)
 {
    for (;;)
     {
@@ -13,8 +13,7 @@ void produser (stck<T> &st)
     }
 }
 
-template <typename T>
-void consumer (stck<T> &st)
+void consumer (stck<int> &st)
 {
    for (;;)
     {
