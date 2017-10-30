@@ -25,11 +25,11 @@ private:
 
 template <typename T>
 void stack<T>::swap(stack<T>& object) noexcept
-{	mutex_.lock();
+{		
+	std::lock_guard<std::mutex> lock(object.mutex_);
 	std::swap(object.array_size_, array_size_);
 	std::swap(count_, object.count_);
 	std::swap(object.array_, array_);
- 	mutex_.unlock();
 }
 
 template <typename T>
@@ -46,7 +46,7 @@ stack<T>::~stack() noexcept
 template <typename T>
 stack<T>::stack(const stack& object)
 {
-	mutex_.lock();
+	std::lock_guard<std::mutex> lock(object.mutex_);
 	array_size_ = object.array_size_;
 	count_ = object.count_;
 	array_= new T[count_];
@@ -59,25 +59,22 @@ stack<T>::stack(const stack& object)
       		delete[] array_;
 		throw;
 	}
-	mutex_.unlock();
 }
 
 template <typename T>
 stack<T>& stack<T>:: operator =(const stack<T>&object) noexcept
 {
-	mutex_.lock();
 	if (this != &object)
 	{
 		stack{object}.swap(*this);
 	}
 	return *this;
-	mutex_.unlock();
 }
 
 template <typename T>
 void stack<T>::push(T const &value)
 {
-	mutex_.lock();
+	std::lock_guard<std::mutex> lock(mutex_);
 	if (array_size_ == count_)
 	{
 		array_size_ = array_size_ == 0 ? 1 : array_size_ * 2;
@@ -98,44 +95,41 @@ void stack<T>::push(T const &value)
 	
 	array_[count_] = value;
 	++count_;
-	mutex_.unlock();
 }
 
 template <typename T>
 void stack<T>::pop()
 {
-	mutex_.lock();
+	std::lock_guard<std::mutex> lock(mutex_);
 	if (empty())
 	{
 		throw "Stack is empty!";
 	}
 	count_--;
-	mutex_.unlock();
 }
 
 template <typename T>
 T stack<T>::top()
 {
-	mutex_.lock();
+	std::lock_guard<std::mutex> lock(mutex_);
 	if (empty())
 	{
 		throw "Stack is empty!";
 	}
 	return array_[count_ - 1];
-	mutex_.unlock();
 }
 
 template <typename T>
 size_t stack<T>::size() const noexcept
 {
-	mutex_.lock();
+	std::lock_guard<std::mutex> lock(mutex_);
+
 	return count_;
-	mutex_.lock();
 }
 
 template <typename T>
 bool stack<T>::empty() const noexcept
-{	mutex_.lock();
-	 return count_==0;
-	 mutex_.unlock();
+{	
+	std::lock_guard<std::mutex> lock(mutex_);
+	return count_==0;
 }
