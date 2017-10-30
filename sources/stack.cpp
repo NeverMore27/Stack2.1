@@ -8,8 +8,8 @@ void producer (stack<int> &st)
 {
    for (;;)
     {
-      st.push(rand()%10);
-      std::this_thread::sleep_for(std::chrono::seconds(std::rand() % (3) + 1));
+     	    st.push(rand()%10);
+      	    std::this_thread::sleep_for(std::chrono::seconds(std::rand() % (3) + 1));
     }
 }
 
