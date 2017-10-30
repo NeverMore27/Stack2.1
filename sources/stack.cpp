@@ -17,8 +17,15 @@ void consumer (stack<int> &st)
 {
    for (;;)
     {
-       st.pop();
-       std::this_thread::sleep_for(std::chrono::seconds(std::rand() % (3) +2 ));
+	   try
+	   { 
+       		st.pop();
+	   }
+	   catch(...)
+	   {
+		 std::this_thread::sleep_for(std::chrono::seconds(std::rand() % (3) +2 ));   
+	   }
+      	   std::this_thread::sleep_for(std::chrono::seconds(std::rand() % (3) +2 ));
     }
 }
 
