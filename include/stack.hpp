@@ -89,7 +89,7 @@ void stack<T>::push(T const &value)
 	}
 	
 	array_[count_] = value;
-	++count;
+	++count_;
 }
 
 template <typename T>
