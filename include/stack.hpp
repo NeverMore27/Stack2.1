@@ -45,26 +45,13 @@ stack<T>::stack(const stack& object)
 {
 	array_size_ = object.array_size_;
 	count_ = object.count_;
+	array_= new T[count_];
 	try 
 	{
-		array_=new T[count_];
 		std::copy(object.array_,object.array_+count_, array_);
 	}
-	catch (std::bad_alloc)
-	{
-    		std::cout <<  "Allocation failure " << std::endl;
-          	delete[] array_;
-		throw;
-	}
-	catch (std::exception &e)
-	{
-    		std::cerr << e.what() << std::endl;  
-      		delete[] array_;
-		throw;
-	}
 	catch (...)
-	{
-    		std::cout << "error" << std::endl;  
+	{ 
       		delete[] array_;
 		throw;
 	}
@@ -86,27 +73,23 @@ void stack<T>::push(T const &value)
 	if (array_size_ == count_)
 	{
 		array_size_ = array_size_ == 0 ? 1 : array_size_ * 2;
+		T *ptr = new T [array_size_];
 		try 
 		{
-			T *ptr = new T [array_size_];
 			std::copy(array_, array_ + count_, ptr);
-			delete[] array_;
-			array_ = ptr;
 		}
-		catch (std::bad_alloc)
-		{
-    			std::cout <<  "Allocation failure " << std::endl;
-			delete[] array_;
-			throw "bad_alloc";
-		}
-		catch (std::exception &e)
-		{
-    			std::cerr << e.what() << std::endl;  
-      			delete[] array_;
+		catch (...)
+		{  
+      			delete[] ptr;
 			throw;
 		}
+		
+		delete[] array_;
+		array_ = ptr;
 	}
-	array_[count_++] = value;
+	
+	array_[count_] = value;
+	++count;
 }
 
 template <typename T>
@@ -126,7 +109,7 @@ T stack<T>::top()
 	{
 		throw "Stack is empty!";
 	}
-	return array_[--count_];
+	return array_[count_ - 1];
 }
 
 template <typename T>
