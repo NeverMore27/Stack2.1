@@ -4,7 +4,7 @@
 
 
 
-void produser (stck<int> &st)
+void producer (stack<int> &st)
 {
    for (;;)
     {
@@ -13,7 +13,7 @@ void produser (stck<int> &st)
     }
 }
 
-void consumer (stck<int> &st)
+void consumer (stack<int> &st)
 {
    for (;;)
     {
