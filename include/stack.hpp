@@ -93,6 +93,7 @@ void stack<T>::push(T const &value)
 	
 	array_[count_] = value;
 	++count_;
+	mutex_.unlock();
 }
 
 template <typename T>
@@ -104,6 +105,7 @@ void stack<T>::pop()
 		throw "Stack is empty!";
 	}
 	count_--;
+	mutex_.unlock();
 }
 
 template <typename T>
