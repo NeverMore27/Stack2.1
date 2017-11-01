@@ -17,7 +17,7 @@ SCENARIO("push")
 	Stack.push(12);
 	sp=Stack.pop();
 	REQUIRE(Stack.size() == 2);
-	REQUIRE(sp == 12);
+	REQUIRE(*sp == 12);
 }
 
 SCENARIO("count and size")
