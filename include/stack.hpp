@@ -98,7 +98,7 @@ void stack<T>::push(T const &value)
 }
 
 template <typename T>
-auto pop() -> std::shared_ptr<T>
+auto stack<T>::pop() -> std::shared_ptr<T>
 {
 	std::lock_guard<std::mutex> lock(mutex_);
 	if (empty()) throw ("Stack is empty");
