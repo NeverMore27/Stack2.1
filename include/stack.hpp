@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <mutex>
-#include <boost>
+#include <memory>
 
 template <typename T>
 class stack
