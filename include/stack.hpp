@@ -98,11 +98,19 @@ void stack<T>::push(T const &value)
 }
 
 template <typename T>
-auto stack<T>::pop() -> std::shared_ptr<T>
+auto stack<T>::pop() -> std::shared_ptr<T> 
 {
 	std::lock_guard<std::mutex> lock(mutex_);
-	if (empty()) throw ("Stack is empty");
+	if (count_==0) throw ("Stack is empty");
 	--count_;
+	std::shared_ptr<T> ar(array_);
+	return ar;
+}
+template <typename T>
+T stack<T>:: top()
+{
+	std::lock_guard<std::mutex> lock(mutex_);
+	
 }
 
 template <typename T>
