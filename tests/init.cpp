@@ -11,9 +11,13 @@ SCENARIO("ini")
 SCENARIO("push")
 {
 	stack<int> Stack;
+	auto sp = std::make_shared<int>();
 	Stack.push(5);
 	Stack.push(7);
+	Stack.push(12);
+	sp=Stack.pop();
 	REQUIRE(Stack.size() == 2);
+	REQUIRE(sp == 12);
 }
 
 SCENARIO("count and size")
