@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <mutex>
+#include <boost>
 
 template <typename T>
 class stack
@@ -11,8 +12,7 @@ public:
 	stack(const stack<T>&) /*strong*/;
 	stack<T>& operator =(const stack<T>&) noexcept;
 	void push(T const &) /*strong*/;
-	void pop() /*strong*/;
-	T top () /*strong*/;
+	auto pop() -> std::shared_ptr<T>;
 	size_t size() const /*noexcept*/ noexcept;
 	bool empty() const /*noexcept*/ noexcept;
 private:
@@ -98,25 +98,11 @@ void stack<T>::push(T const &value)
 }
 
 template <typename T>
-void stack<T>::pop()
+auto pop() -> std::shared_ptr<T>;
 {
 	std::lock_guard<std::mutex> lock(mutex_);
-	if (empty())
-	{
-		throw "Stack is empty!";
-	}
-	count_--;
-}
-
-template <typename T>
-T stack<T>::top()
-{
-	std::lock_guard<std::mutex> lock(mutex_);
-	if (empty())
-	{
-		throw "Stack is empty!";
-	}
-	return array_[count_ - 1];
+	if (empty()) throw ("Stack is empty");
+	--count_;
 }
 
 template <typename T>
