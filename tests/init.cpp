@@ -15,7 +15,7 @@ SCENARIO("push")
 	Stack.push(7);
 	Stack.push(12);
 	std::shared_ptr<int> sp = Stack.pop();
-	bool d=(*sp==12);
+	bool d=(*sp==3);
 	REQUIRE(Stack.size() == 2);
 	REQUIRE(d);
 }
