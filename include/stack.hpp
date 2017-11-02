@@ -106,12 +106,6 @@ auto stack<T>::pop() -> std::shared_ptr<T>
 	std::shared_ptr<T> ar(array_);
 	return ar;
 }
-template <typename T>
-T stack<T>:: top()
-{
-	std::lock_guard<std::mutex> lock(mutex_);
-	
-}
 
 template <typename T>
 size_t stack<T>::size() const noexcept
