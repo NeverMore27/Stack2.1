@@ -66,7 +66,6 @@ stack<T>::stack(const stack& object)
 template <typename T>
 stack<T>& stack<T>:: operator =(const stack<T>&object) noexcept
 {	
-	std::lock_guard<std::mutex> lock(mutex_);
 	if (this != &object)
 	{
 		stack{object}.swap(*this);
@@ -80,7 +79,7 @@ void stack<T>::push(T const &value)
 	std::lock_guard<std::mutex> lock(mutex_);
 	if (array_size_ == count_)
 	{
-		array_size_ = array_size_ == 0 ? 1 : array_size_ * 2;
+		size_t array_size = array_size_ == 0 ? 1 : array_size_ * 2;
 		T *ptr = new T [array_size_];
 		try 
 		{
@@ -92,6 +91,7 @@ void stack<T>::push(T const &value)
 			throw;
 		}
 		
+		array_size_=array_size;
 		delete[] array_;
 		array_ = ptr;
 	}
