@@ -32,7 +32,7 @@ void stack<T>::swap(stack<T>& object) noexcept
 	std::swap(count_, object.count_);
 	std::swap(object.array_, array_);
 	mutex_.unlock();
-	other.mutex_.unlock();
+	object.mutex_.unlock();
 }
 
 template <typename T>
