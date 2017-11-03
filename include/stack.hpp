@@ -105,8 +105,8 @@ auto stack<T>::pop() -> std::shared_ptr<T>
 {
 	std::lock_guard<std::mutex> lock(mutex_);
 	if (count_==0) throw ("Stack is empty");
+	auto ar = std::make_shared<int>(array_[count-1]);
 	--count_;
-	auto ar = std::make_shared<int>(*array_[count]);
 	return ar;
 }
 
