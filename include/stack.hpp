@@ -25,7 +25,7 @@ private:
 template <typename Ty>
 void stack<Ty>::push(const Ty &value)
 {
-	std::lock_guard<std::mutex> lock(mutex_);
+	
 	if (array_size_ == count_)
 	{
 		size_t array_size = array_size_ == 0 ? 1 : array_size_ * 2;
@@ -53,7 +53,7 @@ void stack<Ty>::push(const Ty &value)
 template <class Ty>
 Ty& stack<Ty>:: top() const
 {
-	return array_[count-1];
+	return array_[count_-1];
 }
 
 template <class Ty>
